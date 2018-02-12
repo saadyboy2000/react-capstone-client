@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
 import {Link, Redirect} from 'react-router-dom';
+import formList from './form-list';
 
+//iterate over state for forms, filter for username
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -11,6 +13,10 @@ export class Dashboard extends React.Component {
     }
 
     render() {
+        console.log(this.props.protectedData.forms);
+        //let formsList = this.props.protectedData.forms.forEach((form, index) => console.log(form));
+                
+          
         return (
             <div className="dashboard">
                 <div className="dashboard-username">
@@ -18,11 +24,12 @@ export class Dashboard extends React.Component {
                 </div>
                 <div className="dashboard-name">Name: {this.props.name}</div>
                 <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
+                 
                 </div>
                 <div className = "dashboard-link">
                     <Link to= "/form" className = "navbar-brand"> Dr Rana Form Completer</Link>
                 </div>
+                <formList form={this.props.protectedData} />
             </div>
         );
     }
@@ -33,7 +40,7 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
-        protectedData: state.protectedData.data
+        protectedData: state.protectedData
     };
 };
 

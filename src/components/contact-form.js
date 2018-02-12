@@ -15,11 +15,11 @@ import {Link, Redirect} from 'react-router-dom';
 
 export class ContactForm extends React.Component {
     onSubmit(values) {
-        const {email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications} = values;
-        const form = {email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications};
+        const {username, email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications} = values;
+        const form = {username,email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications};
         return this.props
             .dispatch(registerForm(form))
-            .then(() => this.props.dispatch((email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications)));
+            .then(() => this.props.dispatch((username,email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications)));
     }
         /*
         return fetch('/api/messages', {
@@ -85,7 +85,7 @@ export class ContactForm extends React.Component {
                 <div className="message message-error">{this.props.error}</div>
             );
         }
-*/
+*/      //add select to all your options
         return (
             <div className = "container">
                <div className = "form-link">
@@ -97,7 +97,13 @@ export class ContactForm extends React.Component {
                     this.onSubmit(values)
                 )}>
                 
-              
+              <Field
+                    name="username"
+                    type="text"
+                    component={Input}
+                    label="please re-enter your username"
+                    validate={[required, nonEmpty]}
+                />
               
                 <Field
                     name="email"
@@ -119,11 +125,10 @@ export class ContactForm extends React.Component {
 
                  <Field
                     name="marital"
-                    element="select"
                     component="select"
                     label="What is your marital status?"> 
                     <option value="married">married</option>
-                    <option value="separated">separated</option>
+                    <option value="separated">single</option>
                     <option value="divorced">divorced</option>
                     <option value="widowed">widowed</option>
                     <option value="separated">separated</option>
@@ -133,9 +138,9 @@ export class ContactForm extends React.Component {
 
                  <Field
                     name="hand"
-                    element="select"
                     component="select"
                     label="Which hand is your dominant hand?"> 
+                    <option value="select">select</option>
                     <option value="right">right</option>
                     <option value="left">left</option>
                 </Field>
@@ -165,9 +170,9 @@ export class ContactForm extends React.Component {
 
                  <Field
                     name="tobacco"
-                    element="select"
                     component="select"
-                    label="Do you use tobacco?"> 
+                    label="Do you use tobacco?">
+                    <option value="select">select</option> 
                     <option value="yes">yes</option>
                     <option value="no">no</option>
                 </Field>
@@ -176,9 +181,9 @@ export class ContactForm extends React.Component {
 
                  <Field
                     name="nonmedicalDrugs"
-                    element="select"
                     component="select"
-                    label="Do you use nonmedical drugs?"> 
+                    label="Do you use nonmedical drugs?">
+                    <option value="select">select</option> 
                     <option value="yes">yes</option>
                     <option value="no">no</option>
                 </Field>
@@ -188,9 +193,9 @@ export class ContactForm extends React.Component {
 
                  <Field
                     name="alcohol"
-                    element="select"
                     component="select"
-                    label="Do you use alcohol?"> 
+                    label="Do you use alcohol?">
+                    <option value="select">select</option> 
                     <option value="yes">yes</option>
                     <option value="no">no</option>
                 </Field>
@@ -199,9 +204,9 @@ export class ContactForm extends React.Component {
 
                  <Field
                     name="VD"
-                    element="select"
                     component="select"
                     label="Do you have VD "> 
+                    <option value="select">select</option>
                     <option value="yes">yes</option>
                     <option value="no">no</option>
                 </Field>
@@ -267,7 +272,6 @@ export class ContactForm extends React.Component {
 
                  <Field
                     name="origin"
-                    element="select"
                     component="select"
                     label="What is the origin of your major disability?"> 
                     <option value="unknown">unknown</option>
@@ -309,6 +313,9 @@ export class ContactForm extends React.Component {
 
 export default reduxForm({
     form: 'contact',
-   onSubmitFail: (errors, dispatch) =>
-      dispatch(focus('contact', Object.keys(errors)[0]))
+   onSubmitFail: (errors, dispatch) => {
+      //dispatch(focus('contact', Object.keys(errors)[0]))
+   }
 })(ContactForm);
+
+
