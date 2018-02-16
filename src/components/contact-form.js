@@ -1,10 +1,15 @@
 import React from 'react';
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, SubmissionError, focus, change} from 'redux-form';
 //import { Control } from 'react-redux-form';
+import {connect} from 'react-redux';
 import {registerForm} from '../actions/forms';
 import Input from './input';
 import {required, nonEmpty, email} from '../validators';
 import {Link, Redirect} from 'react-router-dom';
+
+//import styled from 'styled-components';
+//why doesn't above work?
+
 
 //import NavigationBar from './NavigationBar';
 //https://davidkpiano.github.io/react-redux-form/docs/api/Control.html
@@ -13,6 +18,13 @@ import {Link, Redirect} from 'react-router-dom';
 //ask about field, where you can find that documentation, also how to just have a label
 //when do I use select?
 
+/*
+const button = styled.button`
+    background: red;
+    border-radius: 8px;
+    color: white;
+`;
+*/
 export class ContactForm extends React.Component {
     onSubmit(values) {
         const {username, email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications} = values;
@@ -68,6 +80,10 @@ export class ContactForm extends React.Component {
     }
 
 */
+    componentDidMount(){
+        this.props.dispatch(change("contact", "email", this.props.email))
+        this.props.dispatch(change("contact", "username", this.props.username))
+    }
 
     render() {
       /*  let successMessage;
@@ -86,8 +102,17 @@ export class ContactForm extends React.Component {
             );
         }
 */      //add select to all your options
+
+
         return (
-            <div className = "container">
+
+          <div className = "container">
+           
+             { this.props.isFormCreated &&
+                <Redirect to="/dashboard" />
+                
+           }
+           
                <div className = "form-link">
                     <Link to= "/Dashboard" className = "navbar-brand"> Dashboard</Link>
                 </div>
@@ -98,22 +123,25 @@ export class ContactForm extends React.Component {
                 )}>
                 
               <Field
+                    className="form-group"
                     name="username"
                     type="text"
                     component={Input}
-                    label="please re-enter your username"
+                    label="Please re-enter your username"
                     validate={[required, nonEmpty]}
                 />
               
                 <Field
+                    className="form-group"
                     name="email"
                     type="email"
                     component={Input}
-                    label="please enter your email address"
+                    label="Please enter your email address"
                     validate={[required, nonEmpty, email]}
                 />
 
                 <Field
+                    className="form-group"
                     name="age"
                     type="text"
                     component={Input}
@@ -121,9 +149,10 @@ export class ContactForm extends React.Component {
                     validate={[required, nonEmpty]}
                 />
 
-                <label>What is your marrital status?</label>
+                <label className="control-label">What is your marrital status?</label>
 
                  <Field
+                    className="form-group"
                     name="marital"
                     component="select"
                     label="What is your marital status?"> 
@@ -134,9 +163,10 @@ export class ContactForm extends React.Component {
                     <option value="separated">separated</option>
                 </Field>
 
-                    <label>Which hand is your dominant hand?</label>
+                    <label className="control-label">Which hand is your dominant hand?</label>
 
                  <Field
+                    className="form-group"
                     name="hand"
                     component="select"
                     label="Which hand is your dominant hand?"> 
@@ -146,6 +176,7 @@ export class ContactForm extends React.Component {
                 </Field>
 
                    <Field
+                   className="form-group"
                     name="interpreter"
                     type="text"
                     component={Input}
@@ -153,6 +184,7 @@ export class ContactForm extends React.Component {
                 />
               
                    <Field
+                   className="form-group"
                     name="medicalIssue"
                     element="textarea"
                     component={Input}
@@ -160,15 +192,17 @@ export class ContactForm extends React.Component {
                     validate={[required, nonEmpty]}
                 />
                    <Field
+                   className="form-group"
                     name="presentIllness"
                     element="textarea"
                     component={Input}
                     label="Please describe any present Illness"
                 />
 
-                <label>Do you use tobacco?</label>
+                <label className="control-label">Do you use tobacco?</label>
 
                  <Field
+                    className="form-group"
                     name="tobacco"
                     component="select"
                     label="Do you use tobacco?">
@@ -177,9 +211,10 @@ export class ContactForm extends React.Component {
                     <option value="no">no</option>
                 </Field>
               
-                <label>Do you use nonmedical drugs?</label>
+                <label className="control-label">Do you use nonmedical drugs?</label>
 
                  <Field
+                    className="form-group"
                     name="nonmedicalDrugs"
                     component="select"
                     label="Do you use nonmedical drugs?">
@@ -189,9 +224,10 @@ export class ContactForm extends React.Component {
                 </Field>
              
 
-                <label>Do you use alcohol?</label>
+                <label className="control-label">Do you use alcohol?</label>
 
                  <Field
+                    className="form-group"
                     name="alcohol"
                     component="select"
                     label="Do you use alcohol?">
@@ -200,9 +236,10 @@ export class ContactForm extends React.Component {
                     <option value="no">no</option>
                 </Field>
 
-                <label>Do you have VD(venereal disease)?</label>
+                <label className="control-label">Do you have VD(venereal disease)?</label>
 
                  <Field
+                    className="form-group"
                     name="VD"
                     component="select"
                     label="Do you have VD "> 
@@ -212,6 +249,7 @@ export class ContactForm extends React.Component {
                 </Field>
 
                 <Field
+                    className="form-group"
                     name="workedLast"
                     type="text"
                     component={Input}
@@ -221,6 +259,7 @@ export class ContactForm extends React.Component {
            
 
                 <Field
+                    className="form-group"
                     name="pastHistory"
                     element="textarea"
                     component={Input}
@@ -228,6 +267,7 @@ export class ContactForm extends React.Component {
                 />
               
                 <Field
+                    className="form-group"
                     name="familyHistoryDiabetes"
                     type="text"
                     component={Input}
@@ -235,12 +275,14 @@ export class ContactForm extends React.Component {
                 />
 
                  <Field
+                    className="form-group"
                     name="familyHistoryTb"
                     type="text"
                     component={Input}
                     label="Has anyone in your family had TB?(tubercle bacillus)"
                 />
                    <Field
+                   className="form-group"
                     name="familyHistoryHeartDisease"
                     type="text"
                     component={Input}
@@ -248,6 +290,7 @@ export class ContactForm extends React.Component {
                 />
 
                  <Field
+                    className="form-group"
                     name="familyHistoryCancer"
                     type="text"
                     component={Input}
@@ -255,6 +298,7 @@ export class ContactForm extends React.Component {
                 />
 
                 <Field
+                    className="form-group"
                     name="otherFamilyHistory"
                     element="textarea"
                     component={Input}
@@ -262,15 +306,17 @@ export class ContactForm extends React.Component {
                 />
 
                 <Field
+                    className="form-group"
                     name="disabilityBegin"
                     type="text"
                     component={Input}
                     label="When did your disability begin?(date)"
                 />
 
-                <label>What is the origin of your major disability?</label>
+                <label className="control-label">What is the origin of your major disability?</label>
 
                  <Field
+                    className="form-group"
                     name="origin"
                     component="select"
                     label="What is the origin of your major disability?"> 
@@ -284,6 +330,7 @@ export class ContactForm extends React.Component {
                 </Field>
 
                  <Field
+                    className="form-group"
                     name="otherSpecify"
                     type="text"
                     component={Input}
@@ -291,6 +338,7 @@ export class ContactForm extends React.Component {
                 />
 
                 <Field
+                    className="form-group"
                     name="Medications"
                     element="textarea"
                     component={Input}
@@ -299,17 +347,35 @@ export class ContactForm extends React.Component {
 
                 />
 
+                <div className = "button-container">
+                <button className="Button"
 
-                <button
                     type="submit"
                     disabled={this.props.pristine || this.props.submitting}>
-                    submit
+                   <span>Submit</span>
                 </button>
+                </div>
             </form>
             </div>
         );
     }
 }
+
+
+
+const mapStateToProps = state => {
+
+    const {currentUser} = state.auth;
+    return {
+        username: state.auth.currentUser.username,
+        email: state.auth.currentUser.email,
+        isFormCreated: state.protectedData.isFormCreated
+    };
+};
+
+ContactForm = connect(
+    mapStateToProps
+)(ContactForm);
 
 export default reduxForm({
     form: 'contact',

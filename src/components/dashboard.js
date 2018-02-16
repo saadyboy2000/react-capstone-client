@@ -7,6 +7,9 @@ import formList from './form-list';
 
 //iterate over state for forms, filter for username
 
+//dashboard link should be hidden until
+
+
 export class Dashboard extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
@@ -24,12 +27,12 @@ export class Dashboard extends React.Component {
                 </div>
                 <div className="dashboard-name">Name: {this.props.name}</div>
                 <div className="dashboard-protected-data">
-                 
+
                 </div>
                 <div className = "dashboard-link">
                     <Link to= "/form" className = "navbar-brand"> Dr Rana Form Completer</Link>
                 </div>
-                <formList form={this.props.protectedData} />
+                     <h1></h1>
             </div>
         );
     }
@@ -39,8 +42,10 @@ const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
         username: state.auth.currentUser.username,
+        email: state.auth.currentUser.email,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
-        protectedData: state.protectedData
+        protectedData: state.protectedData,
+
     };
 };
 
