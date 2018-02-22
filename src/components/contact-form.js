@@ -3,6 +3,7 @@ import {reduxForm, Field, SubmissionError, focus, change} from 'redux-form';
 //import { Control } from 'react-redux-form';
 import {connect} from 'react-redux';
 import {registerForm} from '../actions/forms';
+import {updateForm} from '../actions/forms';
 import Input from './input';
 import {required, nonEmpty, email} from '../validators';
 import {Link, Redirect} from 'react-router-dom';
@@ -29,6 +30,8 @@ export class ContactForm extends React.Component {
     onSubmit(values) {
         const {username, email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications} = values;
         const form = {username,email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications};
+       //return statement checking if form exists
+       return this.props.getState(console.log(form.username));
         return this.props
             .dispatch(registerForm(form))
             .then(() => this.props.dispatch((username,email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications)));
@@ -156,6 +159,7 @@ export class ContactForm extends React.Component {
                     name="marital"
                     component="select"
                     label="What is your marital status?"> 
+                    <option value="select">select</option>
                     <option value="married">married</option>
                     <option value="separated">single</option>
                     <option value="divorced">divorced</option>
@@ -320,6 +324,7 @@ export class ContactForm extends React.Component {
                     name="origin"
                     component="select"
                     label="What is the origin of your major disability?"> 
+                    <option value="unknown">select</option>
                     <option value="unknown">unknown</option>
                     <option value="disease">disease</option>
                     <option value="injury">injury</option>

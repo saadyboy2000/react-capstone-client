@@ -29,6 +29,32 @@ export const registerForm = form => dispatch => {
         });
 };
 
+export const updateForm = form => dispatch => {
+    return fetch(`${API_BASE_URL}/forms`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(form)
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res =>{return res.json(); })
+        .then(()=>{
+            dispatch(formSuccess());
+        })
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                // Convert ValidationErrors into SubmissionErrors for Redux Form
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
+        });
+};
+
 export const FORM_SUCCESS = 'FORM_SUCCESS';
 export const formSuccess = () => ({
     type: FORM_SUCCESS
