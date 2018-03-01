@@ -2,12 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
-import {clearData} from '../actions/protected-data';
 
-export class HeaderBar extends React.Component {
+export class logOutB extends React.Component {
     logOut() {
         this.props.dispatch(clearAuth());
-        this.props.dispatch(clearData());
         clearAuthToken();
     }
 
@@ -21,7 +19,6 @@ export class HeaderBar extends React.Component {
         }
         return (
             <div className="header-bar">
-                <h1>Dr. Rana Form Completer</h1>
                 {logOutButton}
             </div>
         );
@@ -32,4 +29,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(HeaderBar);
+export default connect(mapStateToProps)(logOutB);

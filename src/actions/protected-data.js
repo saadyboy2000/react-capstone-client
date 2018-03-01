@@ -29,3 +29,9 @@ export const fetchProtectedData = () => (dispatch, getState) => {
             dispatch(fetchProtectedDataError(err));
         });
 };
+
+export const CLEAR_DATA = 'CLEAR_DATA';
+export const clearData = () => ({
+    type: CLEAR_DATA
+    
+});

@@ -60,20 +60,27 @@ export const formSuccess = () => ({
     type: FORM_SUCCESS
 });
 
+export const CHECKFORM_SUCCESS = 'CHECKFORM_SUCCESS';
+export const checkFormSuccess = (data) => ({
+    type: CHECKFORM_SUCCESS,
+    data
+});
 
-/*
-export const fetchForm = form => dispatch => {
-    return fetch(`${API_BASE_URL}/forms`, {
-        method: 'Get',
+export const checkForm = username =>dispatch =>{
+    return fetch(`${API_BASE_URL}/forms/check/${username}`, {
+        method:'GET',
         headers: {
-            'content-type': 'application/json'
+            'content-type':'application/json'
         },
-        //body: JSON.stringify(form)
-    })
-        .then(res => normalizeResponseErrors(res))
-        .then(res =>{return res.json()})
-        .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
 
+    })
+     .then(res => normalizeResponseErrors(res))
+        .then(res =>{return res.json(); })
+        .then((res)=>{
+            if (res){
+                dispatch(checkFormSuccess(res));
+            }
+        })
         .catch(err => {
             const {reason, message, location} = err;
             if (reason === 'ValidationError') {
@@ -86,23 +93,3 @@ export const fetchForm = form => dispatch => {
             }
         });
 };
-
-//got this from protected-data
-export const fetchProtectedData = () => (dispatch, getState) => {
-    const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/protected`, {
-        method: 'GET',
-        headers: {
-            // Provide our auth token as credentials
-            Authorization: `Bearer ${authToken}`
-        }
-    })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
-        .catch(err => {
-            dispatch(fetchProtectedDataError(err));
-        });
-};
-
-*/

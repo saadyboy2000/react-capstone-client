@@ -1,10 +1,13 @@
 //rename this form reducer
 import {
     FETCH_PROTECTED_DATA_SUCCESS,
-    FETCH_PROTECTED_DATA_ERROR
+    FETCH_PROTECTED_DATA_ERROR,
+    CLEAR_DATA
 } from '../actions/protected-data';
 
-import {FORM_SUCCESS} from '../actions/forms';
+import {FORM_SUCCESS,
+        CHECKFORM_SUCCESS
+} from '../actions/forms';
 
 const initialState = {
     forms: '',
@@ -29,5 +32,19 @@ export default function reducer(state = initialState, action) {
          isFormCreated: true  
         });
     }
+
+    else if(action.type ===CHECKFORM_SUCCESS){
+
+        return Object.assign({},state, {
+            userForm: action.data
+        });
+    }
+
+    else if (action.type === CLEAR_DATA){
+        return Object.assign({}, state, {
+            userForm: {}
+        });
+    }
     return state;
 }
+

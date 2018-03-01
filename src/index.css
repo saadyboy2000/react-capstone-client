@@ -60,7 +60,7 @@ h1 small {
   margin: 5rem auto;
   background: #fff;
   width: 100%;
-  padding: 3rem 5rem 0;
+  padding: 3rem 5rem 1rem;
   border-radius: 1px;
 }
 .container::before {
@@ -80,9 +80,85 @@ h1 small {
   transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;
   z-index: -1;
 }
+
+
+
+.welcome{
+  text-align: center;
+}
+
+/*
+.register{
+  position: relative; left: 380px;
+}
+*/
+
+.register{
+  display:block;
+  margin:auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loginLink{
+  display:block;
+  margin:auto;
+  text-align: center;
+  margin-top:220px;
+
+}
+
+.dashboard-link{
+  position:relative; visibility: visible;  bottom:18px;
+  font-family: cursive;
+}
+
+.navbar-brand{
+  position:relative; visibility: visible;  top:20px;
+}
+
 .container:hover::before {
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+.navbar-brand:link{
+  text-decoration: none;
+}
+
+.dashboard-link:link{
+  text-decoration: none;
+  color: grey;
+}
+
+
+.navbar-brand:visited {
+  text-decoration: none;
+
+}
+
+.dashboard-link:visited{
+  text-decoration: none;
+  color: grey;
+}
+
+.navbar-brand:hover, .dashboard-link:hover {
+
+  text-decoration: underline;
+
+}
+
+.navbar-brand:active{
+
+  text-decoration: underline;
+  color: blue;
+
+}
+
+.dashboard-link:active {
+  text-decoration: underline;
+  color: blue;
+
 }
 
 .button-container {
@@ -111,6 +187,7 @@ h1 small {
   color: #fff;
   position: relative;
   z-index: 1;
+
 }
 .Button::before {
   content: '';
@@ -144,6 +221,7 @@ h1 small {
 }
 .Button:focus {
   outline: none;
+
 }
 
 
@@ -256,4 +334,342 @@ fieldset {
     margin: 0 6px;
     padding: 6px;
     display: inline-block;
+}
+
+
+
+
+.login-form{
+  width: 400px;
+  height: 230px;
+  background: #edeff1;
+  margin: 0px auto;
+  padding-top: 20px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.register-form{
+  width: 400px;
+  height: 400px;
+  background: #edeff1;
+  margin: 0px auto;
+  padding-top: 20px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+
+}
+
+#username{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#firstName{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+
+}
+
+#username:focus{
+      border: 2px solid #1abc9d
+
+}
+
+#password{
+   display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#lastName{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#email{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#passwordConfirm{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#age{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#interpreter{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#medicalIssue{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#presentIllness{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#workedLast{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#pastHistory{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#familyHistoryDiabetes{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#familyHistoryTb{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#familyHistoryHeartDisease{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#familyHistoryCancer{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#otherFamilyHistory{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#disabilityBegin{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#otherSpecify{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+#Medications{
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  background: #fcfcfc;
+  margin: 10px auto 20px;
+  transition: opacity 0.4s;
+}
+
+.usernameLabel{
+
+}
+
+.loginSubmit{
+  display: block;
+  background: #1abc9d;
+  width: 314px;
+  padding: 12px;
+  cursor: pointer;
+  color: #fff;
+  border: 0px;
+  margin: auto;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.loginSubmit:hover{
+  background: #09cca6
+}
+
+.formList{
+list-style-type:none;
+}
+.label{
+    display: inline-block;
+    font-weight: bold;
+    color: #00008B;
+    
+    width: 200px;
+    
+}
+.value{
+    
 }

@@ -4,6 +4,8 @@ import {reduxForm, Field, SubmissionError, focus, change} from 'redux-form';
 import {connect} from 'react-redux';
 import {registerForm} from '../actions/forms';
 import {updateForm} from '../actions/forms';
+import {checkForm} from '../actions/forms';
+import {logOutB} from './log-out';
 import Input from './input';
 import {required, nonEmpty, email} from '../validators';
 import {Link, Redirect} from 'react-router-dom';
@@ -31,80 +33,59 @@ export class ContactForm extends React.Component {
         const {username, email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications} = values;
         const form = {username,email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications};
        //return statement checking if form exists
-       return this.props.getState(console.log(form.username));
+       //return this.props.getState(form);
+       console.log(this.props.userForm);
+       if(this.props.userForm){
+        return this.dispatch(updateForm(form))
+        .then(() => this.props.dispatch((username,email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications)));
+       }
+       else{
+        console.log("submit");
         return this.props
             .dispatch(registerForm(form))
             .then(() => this.props.dispatch((username,email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications)));
+       }
+        
     }
-        /*
-        return fetch('/api/messages', {
-            method: 'POST',
-            body: JSON.stringify(values),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => {
-                if (!res.ok) {
-                    if (
-                        res.headers.has('content-type') &&
-                        res.headers
-                            .get('content-type')
-                            .startsWith('application/json')
-                    ) {
-                        // It's a nice JSON error returned by us, so decode it
-                        return res.json().then(err => Promise.reject(err));
-                    }
-                    // It's a less informative error returned by express
-                    return Promise.reject({
-                        code: res.status,
-                        message: res.statusText
-                    });
-                }
-                return;
-            })
-            .then(() => console.log('Submitted with values', values))
-            .catch(err => {
-                const {reason, message, location} = err;
-                if (reason === 'ValidationError') {
-                    // Convert ValidationErrors into SubmissionErrors for Redux Form
-                    return Promise.reject(
-                        new SubmissionError({
-                            [location]: message
-                        })
-                    );
-                }
-                return Promise.reject(
-                    new SubmissionError({
-                        _error: 'Error submitting message'
-                    })
-                );
-            });
+       
+    componentWillMount(){
+        this.props.dispatch(checkForm(this.props.username))
     }
-
-*/
+        
     componentDidMount(){
         this.props.dispatch(change("contact", "email", this.props.email))
         this.props.dispatch(change("contact", "username", this.props.username))
+       
+        setTimeout(()=>{
+            if(this.props.userForm){
+            this.props.dispatch(change("contact","age",this.props.userForm.age))
+            this.props.dispatch(change("contact", "marital", this.props.userForm.marital))
+            this.props.dispatch(change("contact", "hand", this.props.userForm.interpreter))
+            this.props.dispatch(change("contact", "medicalIssue", this.props.userForm.medicalIssue))
+            this.props.dispatch(change("contact", "presentIllness", this.props.userForm.presentIllness))
+            this.props.dispatch(change("contact", "tobacco", this.props.userForm.tobacco))
+            this.props.dispatch(change("contact", "nonmedicalDrugs", this.props.userForm.nonmedicalDrugs))
+            this.props.dispatch(change("contact", "alcohol", this.props.userForm.alcohol))
+            this.props.dispatch(change("contact", "VD", this.props.userForm.VD))
+            this.props.dispatch(change("contact", "workedLast", this.props.userForm.workedLast))
+            this.props.dispatch(change("contact", "pastHistory", this.props.userForm.pastHistory))
+            this.props.dispatch(change("contact", "familyHistoryDiabetes", this.props.userForm.familyHistoryDiabetes))
+            this.props.dispatch(change("contact", "familyHistoryTb", this.props.userForm.familyHistoryTb))
+            this.props.dispatch(change("contact", "familyHistoryHeartDisease", this.props.userForm.familyHistoryHeartDisease))
+            this.props.dispatch(change("contact", "familyHistoryCancer", this.props.userForm.familyHistoryCancer))
+            this.props.dispatch(change("contact", "otherFamilyHistory", this.props.userForm.otherFamilyHistory))
+            this.props.dispatch(change("contact", "disabilityBegin", this.props.userForm.disabilityBegin))
+            this.props.dispatch(change("contact", "origin", this.props.userForm.origin))
+            this.props.dispatch(change("contact", "otherSpecify", this.props.userForm.otherSpecify))
+            this.props.dispatch(change("contact", "Medications", this.props.userForm.Medications))
+           }
+            console.log(this.props.userForm)
+        },3000)
+       
     }
 
     render() {
-      /*  let successMessage;
-        if (this.props.submitSucceeded) {
-            successMessage = (
-                <div className="message message-success">
-                    Message submitted successfully
-                </div>
-            );
-        }
-
-        let errorMessage;
-        if (this.props.error) {
-            errorMessage = (
-                <div className="message message-error">{this.props.error}</div>
-            );
-        }
-*/      //add select to all your options
+       
 
 
         return (
@@ -117,7 +98,8 @@ export class ContactForm extends React.Component {
            }
            
                <div className = "form-link">
-                    <Link to= "/Dashboard" className = "navbar-brand"> Dashboard</Link>
+                    <Link to= "/Dashboard" className = "dashboard-link">Dashboard</Link>
+                    {logOutB}
                 </div>
             
             <form
@@ -130,7 +112,7 @@ export class ContactForm extends React.Component {
                     name="username"
                     type="text"
                     component={Input}
-                    label="Please re-enter your username"
+                    label="Username"
                     validate={[required, nonEmpty]}
                 />
               
@@ -139,7 +121,7 @@ export class ContactForm extends React.Component {
                     name="email"
                     type="email"
                     component={Input}
-                    label="Please enter your email address"
+                    label="Email Address"
                     validate={[required, nonEmpty, email]}
                 />
 
@@ -374,7 +356,9 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         email: state.auth.currentUser.email,
-        isFormCreated: state.protectedData.isFormCreated
+        isFormCreated: state.protectedData.isFormCreated,
+        userForm: state.protectedData.userForm|| null,
+       
     };
 };
 
