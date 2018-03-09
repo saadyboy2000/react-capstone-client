@@ -29,8 +29,9 @@ export const registerForm = form => dispatch => {
         });
 };
 
-export const updateForm = form => dispatch => {
-    return fetch(`${API_BASE_URL}/forms`, {
+export const updateForm = (form,id) => dispatch => {
+    console.log("update Action");
+    return fetch(`${API_BASE_URL}/forms/${id}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json'

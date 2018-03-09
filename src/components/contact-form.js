@@ -35,8 +35,9 @@ export class ContactForm extends React.Component {
        //return statement checking if form exists
        //return this.props.getState(form);
        console.log(this.props.userForm);
-       if(this.props.userForm){
-        return this.dispatch(updateForm(form))
+       if(this.props.userForm.username){
+        console.log(this.props.userForm);
+        return this.props.dispatch(updateForm(form,this.props.userForm._id))
         .then(() => this.props.dispatch((username,email, age, marital, hand, interpreter, medicalIssue, presentIllness, tobacco, nonmedicalDrugs, alcohol, VD, workedLast, pastHistory, familyHistoryDiabetes, familyHistoryTb, familyHistoryHeartDisease, familyHistoryCancer, otherFamilyHistory, disabilityBegin, origin, otherSpecify, Medications)));
        }
        else{
@@ -80,7 +81,7 @@ export class ContactForm extends React.Component {
             this.props.dispatch(change("contact", "Medications", this.props.userForm.Medications))
            }
             console.log(this.props.userForm)
-        },3000)
+        },100)
        
     }
 

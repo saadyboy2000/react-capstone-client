@@ -9,6 +9,9 @@ label {
     display: block;
     margin: 6px;
 }
+
+set header and username containers to same width as form container and 
+use margin auto
 */
 
 @import url(https://fonts.googleapis.com/css?family=Roboto);
@@ -34,14 +37,24 @@ body *::before {
           box-sizing: border-box;
 }
 
+
 body {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e6e6e6));
   background-image: linear-gradient(top, #f2f2f2, #e6e6e6);
 }
+
+
+/*
+body{
+   background-image: url("https://image.freepik.com/free-vector/abstract-dark-blue-polygonal-background_1035-9700.jpg");
+}
+*/
+
 input, textarea, button {
     margin: 6px;
     display: block;
 }
+
 
 h1 {
   font-size: 2rem;
@@ -53,6 +66,15 @@ h1 small {
   color: #666;
   display: block;
 }
+
+
+.title{
+  
+color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0;
+
+}
+
+
 
 .container {
   position: relative;
@@ -85,6 +107,7 @@ h1 small {
 
 .welcome{
   text-align: center;
+
 }
 
 /*
@@ -97,14 +120,14 @@ h1 small {
   display:block;
   margin:auto;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 22px;
 }
 
 .loginLink{
   display:block;
   margin:auto;
   text-align: center;
-  margin-top:220px;
+  margin-top:22px;
 
 }
 
@@ -115,6 +138,36 @@ h1 small {
 
 .navbar-brand{
   position:relative; visibility: visible;  top:20px;
+
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+
+  
+}
+
+.navbar-brand:hover{
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none !important; 
+}
+.navbar-brand a:hover{
+  text-decoration: none !important; 
 }
 
 .container:hover::before {
@@ -158,6 +211,105 @@ h1 small {
 .dashboard-link:active {
   text-decoration: underline;
   color: blue;
+}
+
+
+.bttn-fill {
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  border-color: transparent;
+  background: transparent;
+  font-weight: 400;
+  cursor: pointer;
+  position: relative;
+  font-size: 20px;
+  font-family: inherit;
+  padding: 5px 12px;
+  z-index: 0;
+  border: none;
+  background: #fff;
+  color: #1d89ff;
+  -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+.bttn-fill:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1d89ff;
+  content: '';
+  opacity: 0;
+  -webkit-transition: opacity 0.15s ease-out, -webkit-transform 0.15s ease-out;
+  transition: opacity 0.15s ease-out, -webkit-transform 0.15s ease-out;
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out, -webkit-transform 0.15s ease-out;
+  z-index: -1;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+.bttn-fill:hover,
+.bttn-fill:focus {
+  box-shadow: 0 1px 8px rgba(58,51,53,0.3);
+  color: #fff;
+  -webkit-transition: all 0.5s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 0.5s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+.bttn-fill:hover:before,
+.bttn-fill:focus:before {
+  opacity: 1;
+  -webkit-transition: opacity 0.2s ease-in, -webkit-transform 0.2s ease-in;
+  transition: opacity 0.2s ease-in, -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in, opacity 0.2s ease-in;
+  transition: transform 0.2s ease-in, opacity 0.2s ease-in, -webkit-transform 0.2s ease-in;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+
+
+.userContainer:hover::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.userContainer{
+  margin-top: 10px;
+  position: relative;
+  max-width: 19rem;
+  
+  background: #fff;
+  width: 100%;
+  padding: 1rem 1rem 1rem;
+  border-radius: 1px;
+}
+
+.userContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+  -webkit-transition: -webkit-transform 0.28s ease-in-out;
+  transition: -webkit-transform 0.28s ease-in-out;
+  transition: transform 0.28s ease-in-out;
+  transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;
+  z-index: -1;
+}
+
+
+.dashboard-username{
+ 
+}
+
+.dashboard-name{
 
 }
 
@@ -341,7 +493,7 @@ fieldset {
 
 .login-form{
   width: 400px;
-  height: 230px;
+  height: 260px;
   background: #edeff1;
   margin: 0px auto;
   padding-top: 20px;
@@ -352,7 +504,7 @@ fieldset {
 
 .register-form{
   width: 400px;
-  height: 400px;
+  height: 610px;
   background: #edeff1;
   margin: 0px auto;
   padding-top: 20px;
