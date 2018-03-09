@@ -8,7 +8,7 @@ import {checkForm} from '../actions/forms';
 import {logOutB} from './log-out';
 import Input from './input';
 import {required, nonEmpty, email} from '../validators';
-import {Link, Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom'; 
 
 //import styled from 'styled-components';
 //why doesn't above work?
