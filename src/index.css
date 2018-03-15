@@ -900,9 +900,7 @@ fieldset {
   transition: opacity 0.4s;
 }
 
-.usernameLabel{
 
-}
 
 .loginSubmit{
   display: block;
@@ -933,8 +931,5 @@ list-style-type:none;
     color: #00008B;
     
     width: 200px;
-    
-}
-.value{
     
 }
