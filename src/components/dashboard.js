@@ -102,9 +102,9 @@ export class Dashboard extends React.Component {
                 </ul>
                 </div>
                 
-                <div className = "dashboard-link">
-                    <Link to= "/form" className = "navbar-brand">Dr. Rana's Form</Link>
-                     <h1></h1>
+                <div className = "navbar-brand-container">
+                    <Link to= "/form" className = "bttn-fill1">Dr. Rana's Form</Link>
+                   
                 </div>
             </div>
         );
